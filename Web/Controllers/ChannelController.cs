@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Core.Contract.Channel;
 using Core.InputModel.Channel;
 using Core.ViewModel.Channel;
+using Hesint.Core.Cache;
 using Hesint.Lib.Models.ResultModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,11 @@ namespace Web.Controllers
     public class ChannelController : Controller
     {
         private IChannelContract channel;
-        public ChannelController(IChannelContract channel)
+        private ICache cache;
+        public ChannelController(IChannelContract channel,ICache cache)
         {
             this.channel = channel;
+            this.cache = cache;
         }
 
         /// <summary>
